@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <script type="text/javascript">
+        function test() {
+            console.log("function test");
+        }
+
+        function addRow() {
+            var table = document.getElementById("TableSI");
+            var row = "<tr><td>1</td><td>2</td></tr>";
+            table.innerHTML+=row;
+        }
+    </script>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type='button' value='name' onclick='addRow()'/>
+<table id="TableSI">
+    <tr>
+        <td>
+            <input type='button' value='name2' onclick='new function() {console.log("test2")}'/>
+        </td>
+        <td>
+            <input type='button' value='name2' onclick='new function() {console.log("test3")}'/>
+        </td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>4</td>
+    </tr>
+</table>
+</body>
+</html>

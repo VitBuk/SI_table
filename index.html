@@ -11,12 +11,26 @@
             var row = "<tr><td>1</td><td>2</td></tr>";
             table.innerHTML+=row;
         }
+
+        function score(){
+
+        }
+        function addPlayer() {
+            var playerScore = 0;
+            var table = document.getElementById("TableSI");
+            var scoreButtons = "<tr><td><input type='button' value='-10' onclick='playerScore=-10'/></td>" +
+                    "<tr><td><input type = 'button' value='+10' onclick='playerScore=+10'/></td>" ;
+            var checkValue = "<tr><td><input type='button' value='checkConsole' onclick='new function() {console.log(playerScore)}'/></td>";
+            table.innerHTML+=scoreButtons;
+            table.innerHTML+=playerScore;
+            table.innerHTML+=checkValue;
+        }
     </script>
     <meta charset="UTF-8">
     <title></title>
 </head>
 <body>
-<input type='button' value='name' onclick='addRow()'/>
+<input type='button' value='Add Player' onclick='addPlayer()'/>
 <table id="TableSI">
     <tr>
         <td>

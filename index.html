@@ -2,29 +2,27 @@
 <html>
 <head lang="en">
     <script type="text/javascript">
-        function test() {
-            console.log("function test");
-        }
+        var playerScore = 0;
 
-        function addRow() {
-            var table = document.getElementById("TableSI");
-            var row = "<tr><td>1</td><td>2</td></tr>";
-            table.innerHTML+=row;
-        }
-
-        function score(){
-
+        function changeScore(score, change){
+            var modifiedScore = score + change;
+            var playerScoreTable = document.getElementById("PlayerScoreTable");
+            var scoreHistoryTable = document.getElementById("ScoreHistoryTable");
+            playerScoreTable.innerHTML=modifiedScore;
+            scoreHistoryTable.innerHTML+=change;
+            playerScore = modifiedScore;
         }
         function addPlayer() {
-            var playerScore = 0;
             var table = document.getElementById("TableSI");
-            var scoreButtons = "<tr><td><input type='button' value='-10' onclick='playerScore=-10'/></td>" +
-                    "<tr><td><input type = 'button' value='+10' onclick='playerScore=+10'/></td>" ;
-            var checkValue = "<tr><td><input type='button' value='checkConsole' onclick='new function() {console.log(playerScore)}'/></td>";
+            var playerNameTable = document.getElementById("PlayerNameTable");
+            var playerScoreTable = document.getElementById("PlayerScoreTable");
+            var scoreButtons = "<tr><td><input type='button' value='-10' onclick='changeScore(playerScore, -10)'/></td>" +
+                    "<tr><td><input type = 'button' value='+10' onclick='changeScore(playerScore, +10)'/></td>" ;
             table.innerHTML+=scoreButtons;
-            table.innerHTML+=playerScore;
-            table.innerHTML+=checkValue;
+            playerNameTable.innerHTML = "Крабэ";
+            playerScoreTable.innerHTML = playerScore;
         }
+
     </script>
     <meta charset="UTF-8">
     <title></title>
@@ -33,20 +31,22 @@
 <input type='button' value='Add Player' onclick='addPlayer()'/>
 <table id="TableSI">
     <tr>
-        <td>
-            <input type='button' value='name2' onclick='new function() {console.log("test2")}'/>
-        </td>
-        <td>
-            <input type='button' value='name2' onclick='new function() {console.log("test3")}'/>
-        </td>
+        <td></td>
     </tr>
+</table>
+<table id="PlayerNameTable">
     <tr>
-        <td>1</td>
-        <td>2</td>
+        <td></td>
     </tr>
+</table>
+<table id="PlayerScoreTable">
     <tr>
-        <td>3</td>
-        <td>4</td>
+        <td></td>
+    </tr>
+</table>
+<table id="ScoreHistoryTable">
+    <tr>
+        <td></td>
     </tr>
 </table>
 </body>

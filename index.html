@@ -2,6 +2,54 @@
 <html>
 <head lang="en">
     <script type="text/javascript">
+        var globalID = 0;
+
+        function createTable (tableID) {
+            var tableIDID = tableID;
+            var table = "<table id="+tableIDID+"> <tr><td>new table</td></tr> </table>";
+            var tableSI = document.getElementById("TableSI");
+            tableSI.innerHTML += table;
+        }
+        function changeValue () {
+            var table = document.getElementById("2");
+            table.innerHTML = 100;
+        }
+
+
+
+
+
+        /*
+        var playerIDis = 0;
+        playerScore = 100;
+
+        function checkLastPlayerID () {
+            console.log("Last player ID was" + " " + playerIDis);
+        }
+
+        function addPlayer (playerID) {
+            scoreButtons(id);
+            var playerName = "Player" +id;
+            var tableSI = document.getElementById("TableSI");
+            var playerNameTable = '<table id="+playerName+"> <tr><td></td></tr>';
+            tableSI.innerHTML += playerNameTable;
+
+        }
+
+        function scoreButtons (id) {
+            var tableSI = document.getElementById("TableSI");
+            var scoreButtons = "<tr><td><input type='button' value='-10' onclick='changeScore(id, playerScore, -10)'/></td>" +
+                    "<tr><td><input type = 'button' value='+10' onclick='changeScore(id, playerScore, +10)'/></td>" ;
+            tableSI.innerHTML += scoreButtons;
+        }
+
+        function changeScore(id, score, change) {
+            var playerName = "Player" +id;
+            var playerNameTable = document.getElementById(playerName);
+            playerNameTable.innerHTML += (score+change);
+        }
+  */
+/*
         var playerScore = 0;
 
         function changeScore(score, change){
@@ -22,29 +70,15 @@
             playerNameTable.innerHTML = "Крабэ";
             playerScoreTable.innerHTML = playerScore;
         }
-
+*/
     </script>
     <meta charset="UTF-8">
     <title></title>
 </head>
 <body>
-<input type='button' value='Add Player' onclick='addPlayer()'/>
+<input type='button' value='Create Table' onclick='createTable(globalID); globalID +=1;'/>
+<input type='button' value='Change Value of Table with ID 2' onclick='changeValue();'/>
 <table id="TableSI">
-    <tr>
-        <td></td>
-    </tr>
-</table>
-<table id="PlayerNameTable">
-    <tr>
-        <td></td>
-    </tr>
-</table>
-<table id="PlayerScoreTable">
-    <tr>
-        <td></td>
-    </tr>
-</table>
-<table id="ScoreHistoryTable">
     <tr>
         <td></td>
     </tr>

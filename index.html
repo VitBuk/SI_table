@@ -4,10 +4,6 @@
     <script type="text/javascript">
         var globalPlayerID = 0;
 
-        function checkPlayerID () {
-            console.log("Current player ID is " + globalPlayerID);
-        }
-
         function addPlayer (playerId) {
             var playerScoreId = "Score" + playerId;
             var playerNameId = "Player" + playerId;
@@ -18,7 +14,6 @@
             var scoreHistoryTD = "<td id ="+scoreHistoryId+">0</td>";
             var scoreButton1 = " <td><input type = 'button' value='-10' onclick='changeScore("+playerId+", -10)'/></td>";
             var scoreButton2 = "<td><input type = 'button' value ='+10' onclick='changeScore("+playerId+", +10)'/></td>";
-
 
             var tableSI = document.getElementById("TableSI");
             tableSI.innerHTML += playerNameTD + scoreButton1 + scoreButton2 + playerScoreTD + scoreHistoryTD;
@@ -37,117 +32,13 @@
             playerScoreHistory.innerHTML += change;
 
         }
-/*
-        function addPlayer (playerId) {
-            var tableSI = document.getElementById("TableSI");
-            var playerName = "Player" + playerId;
-            var playerScore = "Score" + playerId;
-            var currentScore = 0;
-            // player name
-            var playerNameTable = "<tr><td> <table id="+playerName+" <tr><td> "+playerName+" </td></tr></table></td></tr>";
-            // +10/-10 buttons
-            var scoreButtons = "<td><input type='button' value='-10' onclick=' new function () { " +
-                    "this.currentScore = 10; changeScore(0, this.currentScore, -10)}; this.currentScore-=10;'/> </td>" +
-                    "<td><input type = 'button' value='+10' onclick='changeScore(playerId, currentScore, +10 ); currentScore+=10;'/> </td>" ;
-            // score
-            var playerScoreTable = "<tr><td> <table id="+playerScore+"><tr><td>"+currentScore+"</td></tr></table></td></tr>";
-            tableSI.innerHTML += playerNameTable;
-            var tablePlayerNameTable = document.getElementById(playerName);
-            tablePlayerNameTable.innerHTML += scoreButtons;
-            tablePlayerNameTable.innerHTML += playerScoreTable;
-        }
 
-        function getPlayerScore (id, change) {
-            var playerScoreValue = 0;
-            playerScoreValue +=change;
-            return this.playerScoreValue;
-
-
-        }
-        function changeScore (playerId, score, change) {
-            var playerScore = "Score" + playerId;
-            var playerScoreTable = document.getElementById(playerScore);
-            playerScoreTable.innerHTML = score+change;
-
-        }
-        */
-/*
-        function createTable (tableID) {
-            var tableIDID = tableID;
-            var table = "<tr><td><table id="+tableIDID+"> <tr><td>new table</td></tr> </table> </td> </tr>";
-            var tableSI = document.getElementById("TableSI");
-            tableSI.innerHTML += table;
-        }
-
-        function changeValue () {
-            var table = document.getElementById("2");
-            var table = document.getElementById("6");
-            table.innerHTML = 100;
-        }
-
-*/
-
-
-
-        /*
-        var playerIDis = 0;
-        playerScore = 100;
-
-        function checkLastPlayerID () {
-            console.log("Last player ID was" + " " + playerIDis);
-        }
-
-        function addPlayer (playerID) {
-            scoreButtons(id);
-            var playerName = "Player" +id;
-            var tableSI = document.getElementById("TableSI");
-            var playerNameTable = '<table id="+playerName+"> <tr><td></td></tr>';
-            tableSI.innerHTML += playerNameTable;
-
-        }
-
-        function scoreButtons (id) {
-            var tableSI = document.getElementById("TableSI");
-            var scoreButtons = "<tr><td><input type='button' value='-10' onclick='changeScore(id, playerScore, -10)'/></td>" +
-                    "<tr><td><input type = 'button' value='+10' onclick='changeScore(id, playerScore, +10)'/></td>" ;
-            tableSI.innerHTML += scoreButtons;
-        }
-
-        function changeScore(id, score, change) {
-            var playerName = "Player" +id;
-            var playerNameTable = document.getElementById(playerName);
-            playerNameTable.innerHTML += (score+change);
-        }
-  */
-/*
-        var playerScore = 0;
-
-        function changeScore(score, change){
-            var modifiedScore = score + change;
-            var playerScoreTable = document.getElementById("PlayerScoreTable");
-            var scoreHistoryTable = document.getElementById("ScoreHistoryTable");
-            playerScoreTable.innerHTML=modifiedScore;
-            scoreHistoryTable.innerHTML+=change;
-            playerScore = modifiedScore;
-        }
-        function addPlayer() {
-            var table = document.getElementById("TableSI");
-            var playerNameTable = document.getElementById("PlayerNameTable");
-            var playerScoreTable = document.getElementById("PlayerScoreTable");
-            var scoreButtons = "<tr><td><input type='button' value='-10' onclick='changeScore(playerScore, -10)'/></td>" +
-                    "<tr><td><input type = 'button' value='+10' onclick='changeScore(playerScore, +10)'/></td>" ;
-            table.innerHTML+=scoreButtons;
-            playerNameTable.innerHTML = "Крабэ";
-            playerScoreTable.innerHTML = playerScore;
-        }
-*/
     </script>
     <meta charset="UTF-8">
     <title></title>
 </head>
 <body>
 <input type='button' value='Add Player' onclick='addPlayer(globalPlayerID); globalPlayerID +=1;'/>
-<input type='button' value='Check current player ID' onclick='checkPlayerID();'/>
 <table id="TableSI">
     <tr>
         <td></td>

@@ -11,21 +11,17 @@
         function addPlayer (playerId) {
             var playerScoreId = "Score" + playerId;
             var playerNameId = "Player" + playerId;
-            var scoreButtonsId = "ScoreButton" + playerId;
             var scoreHistoryId = "ScoreHistory" + playerId;
 
-            var playerScoreTD = "<tr><td id="+playerScoreId+">0</td></tr>";
-            var playerNameTD = "<tr><td id ="+playerNameId+" > "+playerNameId+"</td></tr>";
-            var scoreHistoryTD = "<tr><td id ="+scoreHistoryId+">0</td></tr>";
-            var scoreButtons = "<tr> <td><input type = 'button' value='-10' onclick='changeScore("+playerId+", -10)'/></td>" +
-                     "<td><input type = 'button' value ='+10' onclick='changeScore("+playerId+", +10)'/></td> </tr>";
+            var playerScoreTD = "<td id="+playerScoreId+">0</td>";
+            var playerNameTD = "<td id ="+playerNameId+" > "+playerNameId+"</td>";
+            var scoreHistoryTD = "<td id ="+scoreHistoryId+">0</td>";
+            var scoreButton1 = " <td><input type = 'button' value='-10' onclick='changeScore("+playerId+", -10)'/></td>";
+            var scoreButton2 = "<td><input type = 'button' value ='+10' onclick='changeScore("+playerId+", +10)'/></td>";
 
 
             var tableSI = document.getElementById("TableSI");
-            tableSI.innerHTML += playerNameTD;
-            tableSI.innerHTML += scoreButtons;
-            tableSI.innerHTML += playerScoreTD;
-            tableSI.innerHTML += scoreHistoryTD;
+            tableSI.innerHTML += playerNameTD + scoreButton1 + scoreButton2 + playerScoreTD + scoreHistoryTD;
 
             var playerScoreValue = document.getElementById(playerScoreId);
             playerScoreValue.innerHTML = 0;

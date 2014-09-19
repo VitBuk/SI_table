@@ -2,20 +2,75 @@
 <html>
 <head lang="en">
     <script type="text/javascript">
-        var globalID = 0;
+        var globalPlayerID = 0;
 
+        function checkPlayerID () {
+            console.log("Current player ID is " + globalPlayerID);
+        }
+
+        function addPlayer (playerId) {
+            var player = {
+                id: playerId,
+                name: "Player" + playerId,
+                score: 0
+            };
+
+            var tableSI = document.getElementById("TableSI");
+            tableSI.innerHTML += getPlayerName(playerId);
+        }
+
+        function getPlayerName (id) {
+            this.name;
+        }
+/*
+        function addPlayer (playerId) {
+            var tableSI = document.getElementById("TableSI");
+            var playerName = "Player" + playerId;
+            var playerScore = "Score" + playerId;
+            var currentScore = 0;
+            // player name
+            var playerNameTable = "<tr><td> <table id="+playerName+" <tr><td> "+playerName+" </td></tr></table></td></tr>";
+            // +10/-10 buttons
+            var scoreButtons = "<td><input type='button' value='-10' onclick=' new function () { " +
+                    "this.currentScore = 10; changeScore(0, this.currentScore, -10)}; this.currentScore-=10;'/> </td>" +
+                    "<td><input type = 'button' value='+10' onclick='changeScore(playerId, currentScore, +10 ); currentScore+=10;'/> </td>" ;
+            // score
+            var playerScoreTable = "<tr><td> <table id="+playerScore+"><tr><td>"+currentScore+"</td></tr></table></td></tr>";
+            tableSI.innerHTML += playerNameTable;
+            var tablePlayerNameTable = document.getElementById(playerName);
+            tablePlayerNameTable.innerHTML += scoreButtons;
+            tablePlayerNameTable.innerHTML += playerScoreTable;
+        }
+
+        function getPlayerScore (id, change) {
+            var playerScoreValue = 0;
+            playerScoreValue +=change;
+            return this.playerScoreValue;
+
+
+        }
+        function changeScore (playerId, score, change) {
+            var playerScore = "Score" + playerId;
+            var playerScoreTable = document.getElementById(playerScore);
+            playerScoreTable.innerHTML = score+change;
+
+        }
+        */
+/*
         function createTable (tableID) {
             var tableIDID = tableID;
-            var table = "<table id="+tableIDID+"> <tr><td>new table</td></tr> </table>";
+            var table = "<tr><td><table id="+tableIDID+"> <tr><td>new table</td></tr> </table> </td> </tr>";
             var tableSI = document.getElementById("TableSI");
             tableSI.innerHTML += table;
         }
+
         function changeValue () {
             var table = document.getElementById("2");
+            var table = document.getElementById("6");
             table.innerHTML = 100;
         }
 
-
+*/
 
 
 
@@ -76,8 +131,8 @@
     <title></title>
 </head>
 <body>
-<input type='button' value='Create Table' onclick='createTable(globalID); globalID +=1;'/>
-<input type='button' value='Change Value of Table with ID 2' onclick='changeValue();'/>
+<input type='button' value='Create Table' onclick='addPlayer(globalPlayerID); globalPlayerID +=1;'/>
+<input type='button' value='Check current player ID' onclick='checkPlayerID();'/>
 <table id="TableSI">
     <tr>
         <td></td>

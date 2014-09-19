@@ -9,18 +9,37 @@
         }
 
         function addPlayer (playerId) {
-            var player = {
-                id: playerId,
-                name: "Player" + playerId,
-                score: 0
-            };
+            var playerScoreId = "Score" + playerId;
+            var playerNameId = "Player" + playerId;
+            var scoreButtonsId = "ScoreButton" + playerId;
+            var scoreHistoryId = "ScoreHistory" + playerId;
+
+            var playerScoreTD = "<tr><td id="+playerScoreId+">0</td></tr>";
+            var playerNameTD = "<tr><td id ="+playerNameId+" > "+playerNameId+"</td></tr>";
+            var scoreHistoryTD = "<tr><td id ="+scoreHistoryId+">0</td></tr>";
+            var scoreButtons = "<tr> <td><input type = 'button' value='-10' onclick='changeScore("+playerId+", -10)'/></td>" +
+                     "<td><input type = 'button' value ='+10' onclick='changeScore("+playerId+", +10)'/></td> </tr>";
+
 
             var tableSI = document.getElementById("TableSI");
-            tableSI.innerHTML += getPlayerName(playerId);
+            tableSI.innerHTML += playerNameTD;
+            tableSI.innerHTML += scoreButtons;
+            tableSI.innerHTML += playerScoreTD;
+            tableSI.innerHTML += scoreHistoryTD;
+
+            var playerScoreValue = document.getElementById(playerScoreId);
+            playerScoreValue.innerHTML = 0;
         }
 
-        function getPlayerName (id) {
-            this.name;
+        function changeScore(id, change){
+            var playerScoreId = "Score" + id;
+            var scoreHistoryId = "ScoreHistory" + id;
+            var playerScoreValue = document.getElementById(playerScoreId);
+            var playerScoreHistory = document.getElementById(scoreHistoryId);
+            var scoreInt = parseInt (playerScoreValue.innerHTML);
+            playerScoreValue.innerHTML = scoreInt + change;
+            playerScoreHistory.innerHTML += change;
+
         }
 /*
         function addPlayer (playerId) {
@@ -131,7 +150,7 @@
     <title></title>
 </head>
 <body>
-<input type='button' value='Create Table' onclick='addPlayer(globalPlayerID); globalPlayerID +=1;'/>
+<input type='button' value='Add Player' onclick='addPlayer(globalPlayerID); globalPlayerID +=1;'/>
 <input type='button' value='Check current player ID' onclick='checkPlayerID();'/>
 <table id="TableSI">
     <tr>

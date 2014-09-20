@@ -12,14 +12,18 @@
 
             var playerList = document.getElementById("playerList");
 
-            var newRow = "<div class=newRow></div>";
+            var newRow = "<div class=newRow>";
             var playerNameDiv = "<div class=playerData id= "+playerNameId+"> "+playerNameId+" </div>";
             var playerScoreDiv = "<div class=playerData id="+playerScoreId+"> 0 </div>";
-            var scoreHistoryDiv = "<div class=playerData id="+scoreHistoryId+"> 0 </div>";
+            var scoreHistoryDiv = "<div class=playerData id="+scoreHistoryId+"> </div>";
             var scoreButton1 = "<div class=playerData > <input type='button' value='-10' onclick='changeScore("+playerId+", -10)'/></div>";
             var scoreButton2 = "<div class=playerData > <input type='button' value='+10' onclick='changeScore("+playerId+", +10)'/></div>";
 
-            playerList.innerHTML += newRow + playerNameDiv + scoreButton1 + scoreButton2 + playerScoreDiv + scoreHistoryDiv;
+            newRow += playerNameDiv+scoreButton1+scoreButton2+playerScoreDiv+scoreHistoryDiv;
+            newRow += "</div>";
+            playerList.innerHTML += newRow;
+            console.log (newRow);
+         //   playerList.innerHTML += playerNameDiv+scoreButton1+scoreButton2+playerScoreDiv+scoreHistoryDiv;
 
         }
 

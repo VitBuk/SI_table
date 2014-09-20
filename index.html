@@ -14,10 +14,10 @@
 
             var newRow = "<div class=newRow>";
             var playerNameDiv = "<div class=playerData id= "+playerNameId+"> "+playerNameId+" </div>";
-            var playerScoreDiv = "<div class=playerData id="+playerScoreId+"> 0 </div>";
+            var playerScoreDiv = "<div class=scoreData id="+playerScoreId+"> 0 </div>";
             var scoreHistoryDiv = "<div class=playerData id="+scoreHistoryId+"> </div>";
-            var scoreButton1 = "<div class=playerData > <input type='button' value='-10' onclick='changeScore("+playerId+", -10)'/></div>";
-            var scoreButton2 = "<div class=playerData > <input type='button' value='+10' onclick='changeScore("+playerId+", +10)'/></div>";
+            var scoreButton1 = "<input class=buttonData type='button' value='-10' onclick='changeScore("+playerId+", -10)'/>";
+            var scoreButton2 = "<input class=buttonData type='button' value='+10' onclick='changeScore("+playerId+", +10)'/>";
 
             newRow += playerNameDiv+scoreButton1+scoreButton2+playerScoreDiv+scoreHistoryDiv;
             newRow += "</div>";
@@ -35,7 +35,7 @@
             var scoreInt = parseInt(playerScoreValue.innerHTML);
 
             playerScoreValue.innerHTML = scoreInt + change;
-            playerScoreHistory.innerHTML += change;
+            playerScoreHistory.innerHTML += "<div>"+change+"</div>";
         }
       /*
         function addPlayer (playerId) {

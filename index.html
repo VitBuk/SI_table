@@ -12,13 +12,14 @@
 
             var playerList = document.getElementById("playerList");
 
-            var playerNameDiv = "<div  id= "+playerNameId+"> "+playerNameId+" </div>";
-            var playerScoreDiv = "<div id="+playerScoreId+"> 0 </div>";
-            var scoreHistoryDiv = "<div id="+scoreHistoryId+"> 0 </div>";
-            var scoreButton1 = "<div> <input type='button' value='-10' onclick='changeScore("+playerId+", -10)'/></div>";
-            var scoreButton2 = "<div> <input type='button' value='+10' onclick='changeScore("+playerId+", +10)'/></div>";
+            var newRow = "<div class=newRow></div>";
+            var playerNameDiv = "<div class=playerData id= "+playerNameId+"> "+playerNameId+" </div>";
+            var playerScoreDiv = "<div class=playerData id="+playerScoreId+"> 0 </div>";
+            var scoreHistoryDiv = "<div class=playerData id="+scoreHistoryId+"> 0 </div>";
+            var scoreButton1 = "<div class=playerData > <input type='button' value='-10' onclick='changeScore("+playerId+", -10)'/></div>";
+            var scoreButton2 = "<div class=playerData > <input type='button' value='+10' onclick='changeScore("+playerId+", +10)'/></div>";
 
-            playerList.innerHTML +=  playerNameDiv + playerScoreDiv + scoreHistoryDiv + scoreButton1 + scoreButton2;
+            playerList.innerHTML += newRow + playerNameDiv + scoreButton1 + scoreButton2 + playerScoreDiv + scoreHistoryDiv;
 
         }
 
@@ -80,8 +81,6 @@
 </tr>
 </table>
 <div id="playerList">
-    <div class="playerData" id="data0">Player Div 1 (Add me dynamically)</div>
-    <div class="playerData" id="data1">Player Div 2 (Add me dynamically)</div>
 </div>
 </body>
 </html>

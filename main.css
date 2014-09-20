@@ -3,5 +3,8 @@
 }
 
 .playerData {
+    display: inline;
+}
+.newRow {
     display: block;
 }

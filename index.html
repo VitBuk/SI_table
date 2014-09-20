@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
+    <link rel="stylesheet" type="text/css" href="main.css">
     <script type="text/javascript">
         var globalPlayerID = 0;
 
@@ -12,8 +13,8 @@
             var playerScoreTD = "<td id="+playerScoreId+">0</td>";
             var playerNameTD = "<td id ="+playerNameId+" > "+playerNameId+"</td>";
             var scoreHistoryTD = "<td id ="+scoreHistoryId+">0</td>";
-            var scoreButton1 = " <td><input type = 'button' value='-10' onclick='changeScore("+playerId+", -10)'/></td>";
-            var scoreButton2 = "<td><input type = 'button' value ='+10' onclick='changeScore("+playerId+", +10)'/></td>";
+            var scoreButton1 = "<td><input type = 'button' value='-10' onclick='changeScore("+playerId+", -10)'/></td>";
+            var scoreButton2 = "<td><input type = 'button' value='+10' onclick='changeScore("+playerId+", +10)'/></td>";
 
             var tableSI = document.getElementById("TableSI");
             tableSI.innerHTML += playerNameTD + scoreButton1 + scoreButton2 + playerScoreTD + scoreHistoryTD;
@@ -44,5 +45,9 @@
         <td></td>
     </tr>
 </table>
+<div id="playerList">
+    <div class="playerData" id="data0">Player Div 1 (Add me dynamically)</div>
+    <div class="playerData" id="data1">Player Div 2 (Add me dynamically)</div>
+</div>
 </body>
 </html>

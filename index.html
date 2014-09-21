@@ -19,7 +19,7 @@
             var scoreHistoryDiv = "<div id="+scoreHistoryId+"> </div>";
             var scoreButton1 = "<input class=scoreButtonData type='button' value='-10' onclick='changeScore("+playerId+", -10)'/>";
             var scoreButton2 = "<input class=scoreButtonData type='button' value='+10' onclick='changeScore("+playerId+", +10)'/>";
-   // task3 var deletePlayerButton = "<input class=deletePlayerButtonData type='button' value='Delete' onclick='deletePlayer("+playerId+")'/>";
+            var deletePlayerButton = "<input class=deletePlayerButtonData type='button' value='Delete' onclick='deletePlayer("+playerId+")'/>";
 
             playerColumn += deletePlayerButton+scoreButton1+scoreButton2+playerNameDiv+playerScoreDiv+scoreHistoryDiv;
             playerColumn += "</div>";
@@ -39,10 +39,10 @@
             playerScoreValue.innerHTML = scoreInt + change;
 
             if (change>0) {
-                playerScoreHistory.innerHTML += "<div class=scoreHistoryData> "+scoreInt+"<span class=scoreHistoryIncrease> +"+change+"</span></div>";
+                playerScoreHistory.innerHTML += "<div class=scoreHistoryData id="+playerScoreId+"> "+scoreInt+"<span class=scoreHistoryIncrease> +"+change+"</span></div>";
             }
             else {
-                playerScoreHistory.innerHTML += "<div class=scoreHistoryData>"+scoreInt+"<span class=scoreHistoryDecrease> "+change+"</span></div>";
+                playerScoreHistory.innerHTML += "<div class=scoreHistoryData id="+scoreHistoryId+">"+scoreInt+"<span class=scoreHistoryDecrease> "+change+"</span></div>";
             }
         }
         /* task3
@@ -52,6 +52,14 @@
             playerColumn.innerHTML = "<div class=deletePlayer></div>";
 
         } */
+
+        function deletePlayer (id) {
+            var playerColumnId = "Column" + id;
+            var playerList = document.getElementById("playerList");
+            var playerColumn = document.getElementById(playerColumnId);
+
+            playerList.removeChild(playerColumn);
+        }
 
     </script>
     <meta charset="UTF-8">

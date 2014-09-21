@@ -6,25 +6,27 @@
         var globalPlayerID = 0;
 
         function addPlayer (playerId) {
+            var playerColumnId = "Column" + playerId;
             var playerScoreId = "Score" + playerId;
             var playerNameId = "Player" + playerId;
             var scoreHistoryId = "ScoreHistory" + playerId;
 
             var playerList = document.getElementById("playerList");
 
-            var newColumn = "<div class=playerColumn>";
+            var playerColumn = "<div class=playerColumn id="+playerColumnId+">";
             var playerNameDiv = "<div class=nameData id= "+playerNameId+"> "+playerNameId+" </div>";
             var playerScoreDiv = "<div class=scoreData id="+playerScoreId+"> 0 </div>";
             var scoreHistoryDiv = "<div id="+scoreHistoryId+"> </div>";
-            var scoreButton1 = "<input class=buttonData type='button' value='-10' onclick='changeScore("+playerId+", -10)'/>";
-            var scoreButton2 = "<input class=buttonData type='button' value='+10' onclick='changeScore("+playerId+", +10)'/>";
+            var scoreButton1 = "<input class=scoreButtonData type='button' value='-10' onclick='changeScore("+playerId+", -10)'/>";
+            var scoreButton2 = "<input class=scoreButtonData type='button' value='+10' onclick='changeScore("+playerId+", +10)'/>";
+   // task3 var deletePlayerButton = "<input class=deletePlayerButtonData type='button' value='Delete' onclick='deletePlayer("+playerId+")'/>";
 
-            newColumn += scoreButton1+scoreButton2+playerNameDiv+playerScoreDiv+scoreHistoryDiv;
-            newColumn += "</div>";
-            playerList.innerHTML += newColumn;
-            console.log (newColumn);
-         //   playerList.innerHTML += scoreButton1+scoreButton2+playerNameDiv+playerScoreDiv+scoreHistoryDiv;
+            playerColumn += deletePlayerButton+scoreButton1+scoreButton2+playerNameDiv+playerScoreDiv+scoreHistoryDiv;
+            playerColumn += "</div>";
+            playerList.innerHTML += playerColumn;
 
+            //check playerColumn <div> composition
+            console.log (playerColumn);
         }
 
         function changeScore (id, change) {
@@ -43,42 +45,14 @@
                 playerScoreHistory.innerHTML += "<div class=scoreHistoryData>"+scoreInt+"<span class=scoreHistoryDecrease> "+change+"</span></div>";
             }
         }
-      /*
-        function addPlayer (playerId) {
-            var playerScoreId = "Score" + playerId;
-            var playerNameId = "Player" + playerId;
-            var scoreHistoryId = "ScoreHistory" + playerId;
+        /* task3
+        function deletePlayer (id) {
+            var playerColumnId = "Column" + id;
+            var playerColumn = document.getElementById(playerColumnId);
+            playerColumn.innerHTML = "<div class=deletePlayer></div>";
 
-            var tableSI = document.getElementById("TableSI");
+        } */
 
-            var playerData = "<tr>";
-            var playerScoreTD = "<td id="+playerScoreId+">0</td>";
-            var playerNameTD = "<td id ="+playerNameId+" > "+playerNameId+"</td>";
-            var scoreHistoryTD = "<td id ="+scoreHistoryId+">0</td>";
-            var scoreButton1 = "<td><input type = 'button' value='-10' onclick='changeScore("+playerId+", -10)'/></td>";
-            var scoreButton2 = "<td><input type = 'button' value='+10' onclick='changeScore("+playerId+", +10)'/></td>";
-
-            playerData +=  playerNameTD + scoreButton1 + scoreButton2 + playerScoreTD ;
-            playerData += scoreHistoryTD;
-            playerData += "</tr>";
-            tableSI.innerHTML += playerData;
-            console.log (tableSI.innerHTML);
-
-            var playerScoreValue = document.getElementById(playerScoreId);
-            playerScoreValue.innerHTML = 0;
-        }
-
-        function changeScore(id, change){
-            var playerScoreId = "Score" + id;
-            var scoreHistoryId = "ScoreHistory" + id;
-            var playerScoreValue = document.getElementById(playerScoreId);
-            var playerScoreHistory = document.getElementById(scoreHistoryId);
-            var scoreInt = parseInt (playerScoreValue.innerHTML);
-            playerScoreValue.innerHTML = scoreInt + change;
-            playerScoreHistory.innerHTML += change;
-
-        }
-*/
     </script>
     <meta charset="UTF-8">
     <title></title>

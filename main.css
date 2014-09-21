@@ -2,24 +2,48 @@
 
 }
 
-.playerData {
-    display: block;
-}
-.newRow {
+.playerColumn{
     display: inline-block;
     vertical-align: top;
     text-align: center;
     background-color: #99AABB;
     font-size: 20pt;
     margin-right: 21px;
-}
-
-.scoreData {
-    font-size: 50pt;
-    background-color: #F1FAFF;
+    padding: 5px;
 }
 
 .buttonData {
     width:  50px;
     height: 50px;
+    font-size: 16pt;
+    margin-bottom: 5px
+}
+
+.nameData {
+    display: block;
+    margin-bottom: 5px;
+    background-color: #F1FAFF;
+}
+
+.scoreData {
+    font-size: 50pt;
+    margin-bottom: 5px;
+    background-color: #F1FAFF;
+}
+
+.scoreHistoryData {
+    display: block;
+    background-color:#F1FAFF ;
+}
+
+.scoreHistoryIncrease {
+    display: inline;
+    color: green;
+    background-color:#F1FAFF ;
+}
+
+.scoreHistoryDecrease {
+    display: inline;
+    color: red;
+    background-color:#F1FAFF ;
 }

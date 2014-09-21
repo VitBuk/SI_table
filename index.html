@@ -12,18 +12,18 @@
 
             var playerList = document.getElementById("playerList");
 
-            var newRow = "<div class=newRow>";
-            var playerNameDiv = "<div class=playerData id= "+playerNameId+"> "+playerNameId+" </div>";
+            var newColumn = "<div class=playerColumn>";
+            var playerNameDiv = "<div class=nameData id= "+playerNameId+"> "+playerNameId+" </div>";
             var playerScoreDiv = "<div class=scoreData id="+playerScoreId+"> 0 </div>";
-            var scoreHistoryDiv = "<div class=playerData id="+scoreHistoryId+"> </div>";
+            var scoreHistoryDiv = "<div id="+scoreHistoryId+"> </div>";
             var scoreButton1 = "<input class=buttonData type='button' value='-10' onclick='changeScore("+playerId+", -10)'/>";
             var scoreButton2 = "<input class=buttonData type='button' value='+10' onclick='changeScore("+playerId+", +10)'/>";
 
-            newRow += playerNameDiv+scoreButton1+scoreButton2+playerScoreDiv+scoreHistoryDiv;
-            newRow += "</div>";
-            playerList.innerHTML += newRow;
-            console.log (newRow);
-         //   playerList.innerHTML += playerNameDiv+scoreButton1+scoreButton2+playerScoreDiv+scoreHistoryDiv;
+            newColumn += scoreButton1+scoreButton2+playerNameDiv+playerScoreDiv+scoreHistoryDiv;
+            newColumn += "</div>";
+            playerList.innerHTML += newColumn;
+            console.log (newColumn);
+         //   playerList.innerHTML += scoreButton1+scoreButton2+playerNameDiv+playerScoreDiv+scoreHistoryDiv;
 
         }
 
@@ -35,7 +35,13 @@
             var scoreInt = parseInt(playerScoreValue.innerHTML);
 
             playerScoreValue.innerHTML = scoreInt + change;
-            playerScoreHistory.innerHTML += "<div>"+change+"</div>";
+
+            if (change>0) {
+                playerScoreHistory.innerHTML += "<div class=scoreHistoryData> "+scoreInt+"<span class=scoreHistoryIncrease> +"+change+"</span></div>";
+            }
+            else {
+                playerScoreHistory.innerHTML += "<div class=scoreHistoryData>"+scoreInt+"<span class=scoreHistoryDecrease> "+change+"</span></div>";
+            }
         }
       /*
         function addPlayer (playerId) {

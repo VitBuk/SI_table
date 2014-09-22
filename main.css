@@ -46,6 +46,11 @@
     background-color:#F1FAFF ;
 }
 
+.scoreHistoryData2 {
+    display: none;
+    background-color:#F1FAFF ;
+}
+
 .scoreHistoryIncrease {
     display: inline;
     color: green;

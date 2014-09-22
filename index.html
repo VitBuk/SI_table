@@ -15,7 +15,7 @@
 
             var playerColumn = "<div class=playerColumn id="+playerColumnId+">";
             var playerNameDiv = "<div class=nameData id= "+playerNameId+"> "+playerNameId+" </div>";
-            var playerScoreDiv = "<div class=scoreData id="+playerScoreId+"> 0 </div>";
+            var playerScoreDiv = "<div class=scoreData id="+playerScoreId+" onclick='enterScore("+playerId+")'> 0 </div>";
             var scoreHistoryDiv = "<div id="+scoreHistoryId+"> </div>";
             var scoreButton1 = "<input class=scoreButtonData type='button' value='-10' onclick='changeScore("+playerId+", -10)'/>";
             var scoreButton2 = "<input class=scoreButtonData type='button' value='+10' onclick='changeScore("+playerId+", +10)'/>";
@@ -39,19 +39,12 @@
             playerScoreValue.innerHTML = scoreInt + change;
 
             if (change>0) {
-                playerScoreHistory.innerHTML += "<div class=scoreHistoryData id="+playerScoreId+"> "+scoreInt+"<span class=scoreHistoryIncrease> +"+change+"</span></div>";
+                playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+playerScoreId+"> "+scoreInt+"<span class=scoreHistoryIncrease> +"+change+"</span></div>" + playerScoreHistory.innerHTML;
             }
             else {
-                playerScoreHistory.innerHTML += "<div class=scoreHistoryData id="+scoreHistoryId+">"+scoreInt+"<span class=scoreHistoryDecrease> "+change+"</span></div>";
+                playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+scoreHistoryId+">"+scoreInt+"<span class=scoreHistoryDecrease> "+change+"</span></div>" + playerScoreHistory.innerHTML;
             }
         }
-        /* task3
-        function deletePlayer (id) {
-            var playerColumnId = "Column" + id;
-            var playerColumn = document.getElementById(playerColumnId);
-            playerColumn.innerHTML = "<div class=deletePlayer></div>";
-
-        } */
 
         function deletePlayer (id) {
             var playerColumnId = "Column" + id;
@@ -59,6 +52,14 @@
             var playerColumn = document.getElementById(playerColumnId);
 
             playerList.removeChild(playerColumn);
+        }
+
+        function enterScore (id) {
+            var playerScoreId = "Score" + id;
+            var playerScoreValue = document.getElementById(playerScoreId);
+
+            playerScoreValue.innerHTML = "<div><input type='text'/></div>";
+
         }
 
     </script>

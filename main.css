@@ -1,4 +1,5 @@
 #playerList {
+    white-space: nowrap;
 
 }
 
@@ -12,10 +13,6 @@
     padding: 5px;
 }
 
-.deletePlayer {
-    display:none;
-}
-
 .scoreButtonData {
     display: inline;
     width:  50px;
@@ -27,7 +24,7 @@
 .deletePlayerButtonData {
     display: block;
     width:  100px;
-    height: 50px;
+    height: 30px;
     font-size: 16pt;
     margin-bottom: 5px;
 }

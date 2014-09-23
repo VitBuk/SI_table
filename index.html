@@ -4,22 +4,20 @@
     <link rel="stylesheet" type="text/css" href="main.css">
     <script type="text/javascript">
         var globalPlayerID = 0;
-        var scoreHistoryMassive = {};
 
         function addPlayer (playerId) {
             var playerColumnId = "Column" + playerId;
             var playerScoreId = "Score" + playerId;
             var playerNameId = "Player" + playerId;
             var scoreHistoryId = "ScoreHistory" + playerId;
-            var scoreHistoryId2 = "ScoreHistory2" + playerId;
 
             var playerList = document.getElementById("playerList");
 
             var playerColumn = "<div class=playerColumn id="+playerColumnId+">";
             var playerNameDiv = "<div class=nameData id= "+playerNameId+"> "+playerNameId+" </div>";
-            var playerScoreDiv = "<div class=scoreData id="+playerScoreId+" onclick='enterScore("+playerId+")'> 0 </div>";
+           // var playerScoreDiv = "<div class=scoreData id="+playerScoreId+"> 0 </div>";
+            var playerScoreDiv = "<div class=scoreData id="+playerScoreId+" onclick='enterScore("+playerId+")'>0</div>";
             var scoreHistoryDiv = "<div id="+scoreHistoryId+"> </div>";
-            var scoreHistoryDiv2 = "<div class=scoreHistoryData2 id="+scoreHistoryId2+"></div>";
             var scoreButton1 = "<input class=scoreButtonData type='button' value='-10' onclick='changeScore("+playerId+", -10)'/>";
             var scoreButton2 = "<input class=scoreButtonData type='button' value='+10' onclick='changeScore("+playerId+", +10)'/>";
             var deletePlayerButton = "<input class=deletePlayerButtonData type='button' value='Delete' onclick='deletePlayer("+playerId+")'/>";
@@ -30,26 +28,25 @@
 
             //check playerColumn <div> composition
             console.log (playerColumn);
+
+            //check enterScore() function composition
+            console.log (enterScore(playerId));
         }
 
         function changeScore (id, change) {
             var playerScoreId = "Score" + id;
             var scoreHistoryId = "ScoreHistory" + id;
-            var scoreHistoryId2 = "ScoreHistory2" + id;
             var playerScoreValue = document.getElementById(playerScoreId);
             var playerScoreHistory = document.getElementById(scoreHistoryId);
-            var playerScoreHistory2 = document.getElementById(scoreHistoryId2);
             var scoreInt = parseInt(playerScoreValue.innerHTML);
 
             playerScoreValue.innerHTML = scoreInt + change;
 
             if (change>0) {
-                playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+scoreHistoryId+"> "+scoreInt+"<span class=scoreHistoryIncrease> +"+change+"</span></div>" + playerScoreHistory.innerHTML;
-                scoreHistoryMassive += change;
+                playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+playerScoreId+"> "+scoreInt+"<span class=scoreHistoryIncrease> +"+change+"</span></div>" + playerScoreHistory.innerHTML;
             }
             else {
-                playerScoreHistory.innerHTML = "<div class=scoreHistoryData2 id="+scoreHistoryId+">"+scoreInt+"<span class=scoreHistoryDecrease> "+change+"</span></div>" + playerScoreHistory.innerHTML;
-                scoreHistoryMassive += change;
+                playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+scoreHistoryId+">"+scoreInt+"<span class=scoreHistoryDecrease> "+change+"</span></div>" + playerScoreHistory.innerHTML;
             }
         }
 
@@ -62,24 +59,16 @@
         }
 
         function enterScore (id) {
-            var playerColumnId = "Column" + id;
-            var scoreHistoryId = "ScoreHistory" +id;
-            var scoreHistoryId2 = "ScoreHistory2"+id;
+            var inputScoreTxtFieldId = "InputScore" + id;
             var playerScoreId = "Score" + id;
-            var playerColumnDiv = document.getElementById(playerColumnId);
-            var playerScoreDiv = document.getElementById(playerScoreId);
-            var scoreHistoryDiv = document.getElementById(scoreHistoryId);
-            var scoreHistoryDiv2 = document.getElementById(scoreHistoryId2);
+            var playerScoreValue = document.getElementById(playerScoreId);
 
-
-            playerColumnDiv.removeChild(scoreHistoryDiv);
-            playerColumnDiv.removeChild(playerScoreDiv);
-            var playerScoreDiv2 = "<div class=scoreData id="+playerScoreId+"><input type='text'/></div>";
-            playerColumnDiv.innerHTML += playerScoreDiv2;
-
-            for (var i=0; i<scoreHistoryMassive.length; i++){
-                playerColumnDiv.innerHTML += "<div class=scoreHistoryData>"+scoreHistoryMassive[i]+"</div>";
+            if (document.getElementById(inputScoreTxtFieldId) === undefined) {
+                playerScoreValue.innerHTML = "<input id="+inputScoreTxtFieldId+" type='text'/>";
             }
+
+            console.log ("test");
+
         }
 
     </script>

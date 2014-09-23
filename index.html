@@ -63,21 +63,34 @@
             console.log (document.getElementById(inputScoreTxtFieldId));
 
             if (document.getElementById(inputScoreTxtFieldId) === null) {
-                playerScoreValue.innerHTML = "<input id="+inputScoreTxtFieldId+" type='text' onkeypress='isEnterPushed(event)' onblur='isFocusLost(event)'/>";
+                playerScoreValue.innerHTML = "<input id="+inputScoreTxtFieldId+" type='text' onkeypress='isEnterPushed(event, "+id+")' onblur='isFocusLost(event, "+id+")'/>";
             }
 
             console.log (document.getElementById(inputScoreTxtFieldId));
 
         }
 
-        function isEnterPushed(event) {
+        function isEnterPushed(event, id) {
+            var playerScoreId = "Score" + id;
+            var inputScoreTxtFieldId = "InputScore" +id;
+            var playerScoreValue = document.getElementById(playerScoreId);
+            var inputTextValue = document.getElementById(inputScoreTxtFieldId);
+
             if (event.keyCode == 13){
+                playerScoreValue.innerHTML = inputTextValue.value;
                 console.log ("Enter!");
+
             }
         }
 
-        function isFocusLost (event) {
+        function isFocusLost (event, id) {
+            var playerScoreId = "Score" + id;
+            var inputScoreTxtFieldId = "InputScore" +id;
+            var playerScoreValue = document.getElementById(playerScoreId);
+            var inputTextValue = document.getElementById(inputScoreTxtFieldId);
+
             if (event.type == 'blur') {
+                playerScoreValue.innerHTML = inputTextValue.value;
                 console.log ("We lost focus");
 
             }

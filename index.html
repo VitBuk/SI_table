@@ -32,19 +32,25 @@
 
         function changeScore (id, change) {
             var playerScoreId = "Score" + id;
-            var scoreHistoryId = "ScoreHistory" + id;
             var playerScoreValue = document.getElementById(playerScoreId);
-            var playerScoreHistory = document.getElementById(scoreHistoryId);
             var scoreInt = parseInt(playerScoreValue.innerHTML);
 
             playerScoreValue.innerHTML = scoreInt + change;
 
+            changeScoreHistory (id, scoreInt, change);
+        }
+
+        function changeScoreHistory (id, score, change) {
+            var scoreHistoryId = "ScoreHistory" + id;
+            var playerScoreHistory = document.getElementById(scoreHistoryId);
+
             if (change>0) {
-                playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+playerScoreId+"> "+scoreInt+"<span class=scoreHistoryIncrease> +"+change+"</span></div>" + playerScoreHistory.innerHTML;
+                playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+scoreHistoryId+"> "+score+"<span class=scoreHistoryIncrease> +"+change+"</span></div>" + playerScoreHistory.innerHTML;
             }
             else {
-                playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+scoreHistoryId+">"+scoreInt+"<span class=scoreHistoryDecrease> "+change+"</span></div>" + playerScoreHistory.innerHTML;
+                playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+scoreHistoryId+">"+score+"<span class=scoreHistoryDecrease> "+change+"</span></div>" + playerScoreHistory.innerHTML;
             }
+
         }
 
         function deletePlayer (id) {
@@ -59,40 +65,35 @@
             var inputScoreTxtFieldId = "InputScore" + id;
             var playerScoreId = "Score" + id;
             var playerScoreValue = document.getElementById(playerScoreId);
-
-            console.log (document.getElementById(inputScoreTxtFieldId));
+            var scoreInt = parseInt(playerScoreValue.innerHTML);
 
             if (document.getElementById(inputScoreTxtFieldId) === null) {
-                playerScoreValue.innerHTML = "<input id="+inputScoreTxtFieldId+" type='text' onkeypress='isEnterPushed(event, "+id+")' onblur='isFocusLost(event, "+id+")'/>";
-            }
-
-            console.log (document.getElementById(inputScoreTxtFieldId));
-
-        }
-
-        function isEnterPushed(event, id) {
-            var playerScoreId = "Score" + id;
-            var inputScoreTxtFieldId = "InputScore" +id;
-            var playerScoreValue = document.getElementById(playerScoreId);
-            var inputTextValue = document.getElementById(inputScoreTxtFieldId);
-
-            if (event.keyCode == 13){
-                playerScoreValue.innerHTML = inputTextValue.value;
-                console.log ("Enter!");
-
+                playerScoreValue.innerHTML = "<input id="+inputScoreTxtFieldId+" value="+scoreInt+" type='text' onkeypress='applyScore(event, "+id+")' onblur='applyScore(event, "+id+")'/>";
             }
         }
-
-        function isFocusLost (event, id) {
+/*
+       function applyScore (event, id) {
             var playerScoreId = "Score" + id;
+            var inputScoreTxtFieldId = "InputScore" + id;
+            var playerScoreValue = document.getElementById(playerScoreId);
+            var inputText = document.getElementById(inputScoreTxtFieldId);
+
+            if (event.type == 'blur' || event.keyCode == 13) {
+                changeScore(id, inputText.value);
+            }
+        }
+*/
+
+        function applyScore (event, id) {
+            var playerScoreId = "Score" +id;
             var inputScoreTxtFieldId = "InputScore" +id;
             var playerScoreValue = document.getElementById(playerScoreId);
-            var inputTextValue = document.getElementById(inputScoreTxtFieldId);
+            var inputText = document.getElementById(inputScoreTxtFieldId);
+            var scoreInt2 = inputText.value;
 
-            if (event.type == 'blur') {
-                playerScoreValue.innerHTML = inputTextValue.value;
-                console.log ("We lost focus");
-
+            if (event.type == 'blur' || event.keyCode == 13) {
+                playerScoreValue.innerHTML = inputText.value;
+                changeScoreHistory(id, scoreInt2, inputText.value);
             }
         }
 

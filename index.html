@@ -28,9 +28,6 @@
 
             //check playerColumn <div> composition
             console.log (playerColumn);
-
-            //check enterScore() function composition
-            console.log (enterScore(playerId));
         }
 
         function changeScore (id, change) {
@@ -66,11 +63,24 @@
             console.log (document.getElementById(inputScoreTxtFieldId));
 
             if (document.getElementById(inputScoreTxtFieldId) === null) {
-                playerScoreValue.innerHTML = "<input id="+inputScoreTxtFieldId+" type='text'/>";
+                playerScoreValue.innerHTML = "<input id="+inputScoreTxtFieldId+" type='text' onkeypress='isEnterPushed(event)' onblur='isFocusLost(event)'/>";
             }
 
             console.log (document.getElementById(inputScoreTxtFieldId));
 
+        }
+
+        function isEnterPushed(event) {
+            if (event.keyCode == 13){
+                console.log ("Enter!");
+            }
+        }
+
+        function isFocusLost (event) {
+            if (event.type == 'blur') {
+                console.log ("We lost focus");
+
+            }
         }
 
     </script>
@@ -79,11 +89,6 @@
 </head>
 <body>
 <input type='button' value='Add Player' onclick='addPlayer(globalPlayerID); globalPlayerID +=1;'/>
-<table id="TableSI">
-    <tr>
-    <td></td>
-</tr>
-</table>
 <div id="playerList">
 </div>
 </body>

@@ -68,7 +68,7 @@
             var scoreInt = parseInt(playerScoreValue.innerHTML);
 
             if (document.getElementById(inputScoreTxtFieldId) === null) {
-                playerScoreValue.innerHTML = "<input id="+inputScoreTxtFieldId+" value="+scoreInt+" type='text' onkeypress='applyScore(event, "+id+")' onblur='applyScore(event, "+id+")'/>";
+                playerScoreValue.innerHTML = "<input id="+inputScoreTxtFieldId+" value="+scoreInt+" type='text' onkeypress='applyScore(event, "+scoreInt+", "+id+")' onblur='applyScore(event, "+scoreInt+", "+id+")'/>";
             }
         }
 /*
@@ -84,16 +84,15 @@
         }
 */
 
-        function applyScore (event, id) {
+        function applyScore (event, score, id) {
             var playerScoreId = "Score" +id;
             var inputScoreTxtFieldId = "InputScore" +id;
             var playerScoreValue = document.getElementById(playerScoreId);
             var inputText = document.getElementById(inputScoreTxtFieldId);
-            var scoreInt2 = inputText.value;
 
             if (event.type == 'blur' || event.keyCode == 13) {
                 playerScoreValue.innerHTML = inputText.value;
-                changeScoreHistory(id, scoreInt2, inputText.value);
+                changeScoreHistory(id, score, (inputText.value - score));
             }
         }
 

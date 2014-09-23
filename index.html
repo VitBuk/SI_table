@@ -63,11 +63,13 @@
             var playerScoreId = "Score" + id;
             var playerScoreValue = document.getElementById(playerScoreId);
 
-            if (document.getElementById(inputScoreTxtFieldId) === undefined) {
+            console.log (document.getElementById(inputScoreTxtFieldId));
+
+            if (document.getElementById(inputScoreTxtFieldId) === null) {
                 playerScoreValue.innerHTML = "<input id="+inputScoreTxtFieldId+" type='text'/>";
             }
 
-            console.log ("test");
+            console.log (document.getElementById(inputScoreTxtFieldId));
 
         }
 

@@ -27,16 +27,29 @@
         playerColumn += deletePlayerButton+scoreButton1+scoreButton2+playerNameDiv+playerScoreDiv+scoreHistoryDiv;
         playerColumn += "</div>";
         playerList.innerHTML += playerColumn;
+
+        //check playerColumn <div> composition
+        console.log (playerColumn);
     }
 
     function changeScore (id, change) {
         var playerScoreId = "Score" + id;
+        var inputTextId = "InputScore" +id;
         var playerScoreValue = document.getElementById(playerScoreId);
-        var scoreInt = parseInt(playerScoreValue.innerHTML);
+        var inputText = document.getElementById(inputTextId);
 
-        playerScoreValue.innerHTML = scoreInt + change;
+        console.log ("parseINt " + playerScoreValue.innerHTML);
 
-        changeScoreHistory (id, scoreInt, change);
+        if (inputText == null) {
+            var scoreInt = parseInt(playerScoreValue.innerHTML);
+            playerScoreValue.innerHTML = scoreInt + change;
+            playerScoreValue.innerHTML = scoreInt + change;
+            changeScoreHistory (id, scoreInt, change);
+        }
+        else {
+            playerScoreValue.innerHTML = (parseInt(inputText.value) + change);
+            changeScoreHistory (id, parseInt(inputText.value), change );
+        }
     }
 
     function changeScoreHistory (id, score, change) {
@@ -52,6 +65,7 @@
         else {
             playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+scoreHistoryId+">"+score+"<span class=scoreHistoryDecrease> "+change+"</span></div>" + playerScoreHistory.innerHTML;
         }
+
     }
 
     function deletePlayer (id) {

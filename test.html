@@ -33,12 +33,22 @@
 
         function changeScore (id, change) {
             var playerScoreId = "Score" + id;
+            var inputTextId = "InputScore" +id;
             var playerScoreValue = document.getElementById(playerScoreId);
-            var scoreInt = parseInt(playerScoreValue.innerHTML);
+            var inputText = document.getElementById(inputTextId);
 
-            playerScoreValue.innerHTML = scoreInt + change;
+            console.log ("parseINt " + playerScoreValue.innerHTML);
 
-            changeScoreHistory (id, scoreInt, change);
+            if (inputText == null) {
+                var scoreInt = parseInt(playerScoreValue.innerHTML);
+                playerScoreValue.innerHTML = scoreInt + change;
+                playerScoreValue.innerHTML = scoreInt + change;
+                changeScoreHistory (id, scoreInt, change);
+            }
+            else {
+                playerScoreValue.innerHTML = (parseInt(inputText.value) + change);
+                changeScoreHistory (id, parseInt(inputText.value), change );
+            }
         }
 
         function changeScoreHistory (id, score, change) {
@@ -102,8 +112,8 @@
                     changeScoreHistory(id, score, -score);
                 }
                 else {
-                    playerScoreValue.innerHTML = inputText.value;
-                    changeScoreHistory(id, score, (inputText.value - score));
+                        playerScoreValue.innerHTML = inputText.value;
+                        changeScoreHistory(id, score, (inputText.value - score));
                 }
             }
         }

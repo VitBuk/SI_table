@@ -43,7 +43,6 @@
         if (inputText == null) {
             var scoreInt = parseInt(playerScoreValue.innerHTML);
             playerScoreValue.innerHTML = scoreInt + change;
-            playerScoreValue.innerHTML = scoreInt + change;
             changeScoreHistory (id, scoreInt, change);
         }
         else {

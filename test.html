@@ -14,7 +14,7 @@
             var playerList = document.getElementById("playerList");
 
             var playerColumn = "<div class=playerColumn id="+playerColumnId+">";
-            var playerNameDiv = "<div class=nameData id= "+playerNameId+" onclick='enterName("+playerId+")'> "+playerNameId+" </div>";
+            var playerNameDiv = "<div class=nameData id= "+playerNameId+" onclick='enterName("+playerId +","+playerName+")'> "+playerNameId+" </div>";
             var playerScoreDiv = "<div class=scoreData id="+playerScoreId+" onclick='enterScore("+playerId+")'>0</div>";
             var scoreHistoryDiv = "<div id="+scoreHistoryId+"> </div>";
 
@@ -36,6 +36,7 @@
             playerColumn += scoreButtons + playerNameDiv + playerScoreDiv + scoreHistoryDiv;
             playerColumn += "</div>";
             playerList.innerHTML += playerColumn;
+            var playerName = document.getElementById(playerNameId);
 
             //check playerColumn <div> composition
             console.log (playerColumn);
@@ -118,25 +119,16 @@
             }
         }
 
-        function enterName (id) {
+        function enterName (id, name) {
             var playerNameId = "Player" +id;
             var playerName = document.getElementById(playerNameId);
             var inputNameId = "InputName" +id;
             var inputName = document.getElementById(inputNameId);
-            var playerOldName;
 
-            console.log ("playerOldName before if " + playerOldName);
-            var playerShowName = playerName.innerHTML;
+            console.log ("Name in EnterName function is " + name);
 
             if (inputName == null) {
-                playerOldName = playerName.innerHTML;
-                console.log ("playerOldName in if " + playerOldName);
-                playerName.innerHTML = "<input id=" + inputNameId + " value=" + playerShowName + " type'text' onkeypress='applyName(event, " + playerOldName + ", " + id + ")' onblur='applyName(event, " + playerOldName + ", " + id + ")'/>";
-                playerOldName = playerName.innerHTML;
-            }
-            else {
-                playerOldName = inputName.value;
-                console.log ("playerOldName after if " + playerOldName);
+                playerName.innerHTML = "<input id=" + inputNameId + " value=" + name + " type'text' onkeypress='applyName(event, " + name + ", " + id + ")' onblur='applyName(event, " + name + ", " + id + ")'/>";
             }
         }
 

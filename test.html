@@ -14,7 +14,6 @@
             var playerList = document.getElementById("playerList");
 
             var playerColumn = "<div class=playerColumn id="+playerColumnId+">";
-            //onclick='enterName("+playerId+")
             var playerNameDiv = "<div class=nameData id= "+playerNameId+" onclick='enterName("+playerId+")'> "+playerNameId+" </div>";
             var playerScoreDiv = "<div class=scoreData id="+playerScoreId+" onclick='enterScore("+playerId+")'>0</div>";
             var scoreHistoryDiv = "<div id="+scoreHistoryId+"> </div>";
@@ -112,15 +111,21 @@
             var playerNameId = "Player" +id;
             var playerName = document.getElementById(playerNameId);
             var inputNameId = "InputName" +id;
+            var inputName = document.getElementById(inputNameId);
             var playerOldName;
+
+            console.log ("playerOldName before if " + playerOldName);
             var playerShowName = playerName.innerHTML;
 
-            if (document.getElementById(inputNameId) == null) {
-                playerName.innerHTML = "<input id="+inputNameId+" value="+playerShowName+" type'text' onkeypress='applyName(event, "+playerOldName+", "+id+")' onblur='applyName(event, "+playerOldName+", "+id+")'/>";
+            if (inputName == null) {
+                playerOldName = playerName.innerHTML;
+                console.log ("playerOldName in if " + playerOldName);
+                playerName.innerHTML = "<input id=" + inputNameId + " value=" + playerShowName + " type'text' onkeypress='applyName(event, " + playerOldName + ", " + id + ")' onblur='applyName(event, " + playerOldName + ", " + id + ")'/>";
                 playerOldName = playerName.innerHTML;
             }
             else {
-                playerOldName = document.getElementById(inputNameId).value;
+                playerOldName = inputName.value;
+                console.log ("playerOldName after if " + playerOldName);
             }
         }
 
@@ -130,12 +135,14 @@
             var playerName = document.getElementById(playerNameId);
             var inputName = document.getElementById(inputNameId);
 
+            console.log ("Параметр name в applyName равен " + name);
             if (event.type == 'blur' || event.keyCode == 13){
-                console.log (inputName.value + "|");
-                if (inputName.value = "") playerName.innerHTML = name;
-                playerName.innerHTML = inputName.value;
-                console.log ("InputName value: " + inputName.value);
-                console.log ("PlayerName.innerHTML " + playerName.innerHTML);
+                if (inputName.value == "") {
+                    playerName.innerHTML = name;
+                }
+                else {
+                    playerName.innerHTML = inputName.value;
+                }
             }
         }
 

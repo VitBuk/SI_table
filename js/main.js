@@ -5,6 +5,8 @@
     window.deletePlayer = deletePlayer;
     window.enterScore = enterScore;
     window.applyScore = applyScore;
+    window.enterName = enterName;
+    window.applyName = applyName;
 
     function addPlayer (playerId) {
         var playerColumnId = "Column" + playerId;

@@ -17,15 +17,26 @@
         var playerList = document.getElementById("playerList");
 
         var playerColumn = "<div class=playerColumn id="+playerColumnId+">";
-        var playerNameDiv = "<div class=nameData id= "+playerNameId+" onclick='enterName("+playerId+")'> "+playerNameId+" </div>";
+        var playerNameDiv = "<div class=nameData id= "+playerNameId+" onclick='enterName("+playerId +")'> "+playerNameId+" </div>";
         var playerScoreDiv = "<div class=scoreData id="+playerScoreId+" onclick='enterScore("+playerId+")'>0</div>";
         var scoreHistoryDiv = "<div id="+scoreHistoryId+"> </div>";
-        //button массив через цикл?_?
-        var scoreButton1 = "<input class=scoreButtonData type='button' value='-10' onclick='changeScore("+playerId+", -10)'/>";
-        var scoreButton2 = "<input class=scoreButtonData type='button' value='+10' onclick='changeScore("+playerId+", +10)'/>";
-        var deletePlayerButton = "<input class=deletePlayerButtonData type='button' value='Delete' onclick='deletePlayer("+playerId+")'/>";
 
-        playerColumn += deletePlayerButton+scoreButton1+scoreButton2+playerNameDiv+playerScoreDiv+scoreHistoryDiv;
+        var scoreButtons = "<div class=mainScoreButtonData>";
+        var deletePlayerButton = "<input class=deletePlayerButtonData type='button' value='Delete' onclick='deletePlayer("+playerId+")'/>";
+        var scoreButton10 = "<div class=scoreMinusButtonData><input class = scorePlusButtonData type='button' value='-10' onclick='changeScore("+playerId+", -10)'/>" +
+            "<input class=scorePlusButtonData type='button' value='+10' onclick='changeScore("+playerId+", +10)'/></div>";
+        var scoreButton20 = "<div class=scoreMinusButtonData><input class = scorePlusButtonData type='button' value='-20' onclick='changeScore("+playerId+", -20)'/>" +
+            "<input class=scorePlusButtonData type='button' value='+20' onclick='changeScore("+playerId+", +20)'/></div>";
+        var scoreButton30 = "<div class=scoreMinusButtonData><input class = scorePlusButtonData type='button' value='-30' onclick='changeScore("+playerId+", -30)'/>" +
+            "<input class=scorePlusButtonData type='button' value='+30' onclick='changeScore("+playerId+", +30)'/></div>";
+        var scoreButton40 = "<div class=scoreMinusButtonData><input class = scorePlusButtonData type='button' value='-40' onclick='changeScore("+playerId+", -40)'/>" +
+            "<input class=scorePlusButtonData type='button' value='+40' onclick='changeScore("+playerId+", +40)'/></div>";
+        var scoreButton50 = "<div class=scoreMinusButtonData><input class = scorePlusButtonData type='button' value='-50' onclick='changeScore("+playerId+", -50)'/>" +
+            "<input class=scorePlusButtonData type='button' value='+50' onclick='changeScore("+playerId+", +50)'/></div>";
+        scoreButtons += deletePlayerButton +scoreButton10 + scoreButton20 + scoreButton30 + scoreButton40 + scoreButton50;
+        scoreButtons += "</div>";
+
+        playerColumn += scoreButtons + playerNameDiv + playerScoreDiv + scoreHistoryDiv;
         playerColumn += "</div>";
         playerList.innerHTML += playerColumn;
 
@@ -82,16 +93,6 @@
         }
     }
 
-    /*   function applyScore (event, id) {
-     var inputTextId = "InputScore" + id;
-     var inputText = document.getElementById(inputTextId);
-
-     if (event.type == 'blur' || event.keyCode == 13) {
-     changeScore(id, inputText.value);
-     }
-     }
-     */
-
     function applyScore (event, score, id) {
         var playerScoreId = "Score" +id;
         var inputScoreId = "InputScore" +id;
@@ -114,38 +115,22 @@
         var playerNameId = "Player" +id;
         var playerName = document.getElementById(playerNameId);
         var inputNameId = "InputName" +id;
-        var inputName = document.getElementById(inputNameId);
-        var playerOldName;
+        var playerOldName = playerName.innerHTML;
 
-        console.log ("playerOldName before if " + playerOldName);
-        var playerShowName = playerName.innerHTML;
 
-        if (inputName == null) {
-            playerOldName = playerName.innerHTML;
-            console.log ("playerOldName in if " + playerOldName);
-            playerName.innerHTML = "<input id=" + inputNameId + " value=" + playerShowName + " type'text' onkeypress='applyName(event, " + playerOldName + ", " + id + ")' onblur='applyName(event, " + playerOldName + ", " + id + ")'/>";
-            playerOldName = playerName.innerHTML;
-        }
-        else {
-            playerOldName = inputName.value;
-            console.log ("playerOldName after if " + playerOldName);
+        if (document.getElementById(inputNameId) == null) {
+            playerName.innerHTML = "<input id=" + inputNameId + " value=" +playerOldName+ " type'text' onkeypress='applyName(event, " + id + ")' onblur='applyName(event," + id + ")'/>";
         }
     }
 
-    function applyName (event, name, id) {
+    function applyName (event, id) {
         var playerNameId = "Player" +id;
         var inputNameId = "InputName" +id;
         var playerName = document.getElementById(playerNameId);
         var inputName = document.getElementById(inputNameId);
 
-        console.log ("Параметр name в applyName равен " + name);
         if (event.type == 'blur' || event.keyCode == 13){
-            if (inputName.value == "") {
-                playerName.innerHTML = name;
-            }
-            else {
-                playerName.innerHTML = inputName.value;
-            }
+            playerName.innerHTML = inputName.value;
         }
     }
 }());

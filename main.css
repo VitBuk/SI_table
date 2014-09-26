@@ -13,12 +13,9 @@
     padding: 5px;
 }
 
-.mainScoreButtonDiv {
+.mainScoreButtonData {
     display: inline-block;
-    vertical-align: top
-    text-align: center;
     background-color: #F1FAFF;
-    padding: 5px;
 }
 
 .scoreMinusButtonData {

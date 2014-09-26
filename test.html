@@ -14,11 +14,11 @@
             var playerList = document.getElementById("playerList");
 
             var playerColumn = "<div class=playerColumn id="+playerColumnId+">";
-            var playerNameDiv = "<div class=nameData id= "+playerNameId+" onclick='enterName("+playerId +","+playerName+")'> "+playerNameId+" </div>";
+            var playerNameDiv = "<div class=nameData id= "+playerNameId+" onclick='enterName("+playerId +")'> "+playerNameId+" </div>";
             var playerScoreDiv = "<div class=scoreData id="+playerScoreId+" onclick='enterScore("+playerId+")'>0</div>";
             var scoreHistoryDiv = "<div id="+scoreHistoryId+"> </div>";
 
-            var scoreButtons = "<div class=mainScoreButtonDiv>";
+            var scoreButtons = "<div class=mainScoreButtonData>";
             var deletePlayerButton = "<input class=deletePlayerButtonData type='button' value='Delete' onclick='deletePlayer("+playerId+")'/>";
             var scoreButton10 = "<div class=scoreMinusButtonData><input class = scorePlusButtonData type='button' value='-10' onclick='changeScore("+playerId+", -10)'/>" +
                     "<input class=scorePlusButtonData type='button' value='+10' onclick='changeScore("+playerId+", +10)'/></div>";
@@ -36,7 +36,6 @@
             playerColumn += scoreButtons + playerNameDiv + playerScoreDiv + scoreHistoryDiv;
             playerColumn += "</div>";
             playerList.innerHTML += playerColumn;
-            var playerName = document.getElementById(playerNameId);
 
             //check playerColumn <div> composition
             console.log (playerColumn);
@@ -119,33 +118,26 @@
             }
         }
 
-        function enterName (id, name) {
+        function enterName (id) {
             var playerNameId = "Player" +id;
             var playerName = document.getElementById(playerNameId);
             var inputNameId = "InputName" +id;
-            var inputName = document.getElementById(inputNameId);
+            var playerOldName = playerName.innerHTML;
 
-            console.log ("Name in EnterName function is " + name);
 
-            if (inputName == null) {
-                playerName.innerHTML = "<input id=" + inputNameId + " value=" + name + " type'text' onkeypress='applyName(event, " + name + ", " + id + ")' onblur='applyName(event, " + name + ", " + id + ")'/>";
+            if (document.getElementById(inputNameId) == null) {
+                playerName.innerHTML = "<input id=" + inputNameId + " value=" +playerOldName+ " type'text' onkeypress='applyName(event, " + id + ")' onblur='applyName(event," + id + ")'/>";
             }
         }
 
-        function applyName (event, name, id) {
+        function applyName (event, id) {
             var playerNameId = "Player" +id;
             var inputNameId = "InputName" +id;
             var playerName = document.getElementById(playerNameId);
             var inputName = document.getElementById(inputNameId);
 
-            console.log ("Параметр name в applyName равен " + name);
             if (event.type == 'blur' || event.keyCode == 13){
-                if (inputName.value == "") {
-                    playerName.innerHTML = name;
-                }
-                else {
                     playerName.innerHTML = inputName.value;
-                }
             }
         }
 

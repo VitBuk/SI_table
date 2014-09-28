@@ -18,18 +18,18 @@
             var playerScoreDiv = "<div class=scoreData id="+playerScoreId+" onclick='enterScore("+playerId+")'>0</div>";
             var scoreHistoryDiv = "<div id="+scoreHistoryId+"> </div>";
 
-            var scoreButtons = "<div class=mainScoreButtonData>";
+            var scoreButtons = "<div class=buttonsDiv>";
             var deletePlayerButton = "<input class=deletePlayerButtonData type='button' value='Delete' onclick='deletePlayer("+playerId+")'/>";
-            var scoreButton10 = "<div class=scoreMinusButtonData><input class = scorePlusButtonData type='button' value='-10' onclick='changeScore("+playerId+", -10)'/>" +
-                    "<input class=scorePlusButtonData type='button' value='+10' onclick='changeScore("+playerId+", +10)'/></div>";
-            var scoreButton20 = "<div class=scoreMinusButtonData><input class = scorePlusButtonData type='button' value='-20' onclick='changeScore("+playerId+", -20)'/>" +
-                    "<input class=scorePlusButtonData type='button' value='+20' onclick='changeScore("+playerId+", +20)'/></div>";
-            var scoreButton30 = "<div class=scoreMinusButtonData><input class = scorePlusButtonData type='button' value='-30' onclick='changeScore("+playerId+", -30)'/>" +
-                    "<input class=scorePlusButtonData type='button' value='+30' onclick='changeScore("+playerId+", +30)'/></div>";
-            var scoreButton40 = "<div class=scoreMinusButtonData><input class = scorePlusButtonData type='button' value='-40' onclick='changeScore("+playerId+", -40)'/>" +
-                    "<input class=scorePlusButtonData type='button' value='+40' onclick='changeScore("+playerId+", +40)'/></div>";
-            var scoreButton50 = "<div class=scoreMinusButtonData><input class = scorePlusButtonData type='button' value='-50' onclick='changeScore("+playerId+", -50)'/>" +
-                    "<input class=scorePlusButtonData type='button' value='+50' onclick='changeScore("+playerId+", +50)'/></div>";
+            var scoreButton10 = "<div><input class =scoreButton type='button' value='-10' onclick='changeScore("+playerId+", -10)'/>" +
+                    "<input class=scoreButton type='button' value='+10' onclick='changeScore("+playerId+", +10)'/></div>";
+            var scoreButton20 = "<div><input class = scoreButton type='button' value='-20' onclick='changeScore("+playerId+", -20)'/>" +
+                    "<input class=scoreButton type='button' value='+20' onclick='changeScore("+playerId+", +20)'/></div>";
+            var scoreButton30 = "<div class=scoreMinusButtonData><input class = scoreButton type='button' value='-30' onclick='changeScore("+playerId+", -30)'/>" +
+                    "<input class=scoreButton type='button' value='+30' onclick='changeScore("+playerId+", +30)'/></div>";
+            var scoreButton40 = "<div><input class = scoreButton type='button' value='-40' onclick='changeScore("+playerId+", -40)'/>" +
+                    "<input class=scoreButton type='button' value='+40' onclick='changeScore("+playerId+", +40)'/></div>";
+            var scoreButton50 = "<div><input class = scoreButton type='button' value='-50' onclick='changeScore("+playerId+", -50)'/>" +
+                    "<input class=scoreButton type='button' value='+50' onclick='changeScore("+playerId+", +50)'/></div>";
             scoreButtons += deletePlayerButton +scoreButton10 + scoreButton20 + scoreButton30 + scoreButton40 + scoreButton50;
             scoreButtons += "</div>";
 

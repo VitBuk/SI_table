@@ -11,29 +11,19 @@
     font-size: 20pt;
     margin-right: 21px;
     padding: 5px;
+    width: 150px;
 }
 
-.mainScoreButtonData {
-    display: inline-block;
+.buttonsDiv {
     background-color: #F1FAFF;
 }
-
-.scoreMinusButtonData {
-    display: block;
-    width:  50px;
-    height: 50px;
-    font-size: 16pt;
-}
-
-.scorePlusButtonData {
-    display: inline;
+.scoreButton {
     width: 50px;
     height: 50px;
-    font-size: 16pt;
+    font-size: 16pt
 }
 
 .deletePlayerButtonData {
-    display: block;
     width:  100px;
     height: 30px;
     font-size: 16pt;

@@ -10,6 +10,7 @@
             var playerScoreId = "Score" + playerId;
             var playerNameId = "Player" + playerId;
             var scoreHistoryId = "ScoreHistory" + playerId;
+            var arbitaryScoreId = "ArbitaryScore" + playerId;
 
             var playerList = document.getElementById("playerList");
 
@@ -19,7 +20,7 @@
             var scoreHistoryDiv = "<div id="+scoreHistoryId+"> </div>";
 
             var scoreButtons = "<div class=buttonsDiv>";
-            var deletePlayerButton = "<input class=deletePlayerButtonData type='button' value='Delete' onclick='deletePlayer("+playerId+")'/>";
+            var deletePlayerButton = "<input class=deletePlayerButton type='button' value='Delete' onclick='deletePlayer("+playerId+")'/>";
             var scoreButton10 = "<div><input class =scoreButton type='button' value='-10' onclick='changeScore("+playerId+", -10)'/>" +
                     "<input class=scoreButton type='button' value='+10' onclick='changeScore("+playerId+", +10)'/></div>";
             var scoreButton20 = "<div><input class = scoreButton type='button' value='-20' onclick='changeScore("+playerId+", -20)'/>" +
@@ -30,7 +31,9 @@
                     "<input class=scoreButton type='button' value='+40' onclick='changeScore("+playerId+", +40)'/></div>";
             var scoreButton50 = "<div><input class = scoreButton type='button' value='-50' onclick='changeScore("+playerId+", -50)'/>" +
                     "<input class=scoreButton type='button' value='+50' onclick='changeScore("+playerId+", +50)'/></div>";
-            scoreButtons += deletePlayerButton +scoreButton10 + scoreButton20 + scoreButton30 + scoreButton40 + scoreButton50;
+            var scoreButtonArbitary = "<div><input class=arbitaryButton type='button' value='-' onclick='changeTextField("+playerId +", false)' />" +
+                    "<input class=arbitaryTextField id="+arbitaryScoreId+" type='text' value='10'/><input class=arbitaryButton type='button' value='+' onclick='changeTextField("+playerId+", true)' /> </div>";
+            scoreButtons += deletePlayerButton +scoreButton10 + scoreButton20 + scoreButton30 + scoreButton40 + scoreButton50 + scoreButtonArbitary;
             scoreButtons += "</div>";
 
             playerColumn += scoreButtons + playerNameDiv + playerScoreDiv + scoreHistoryDiv;
@@ -39,6 +42,16 @@
 
             //check playerColumn <div> composition
             console.log (playerColumn);
+        }
+
+        function changeTextField (id, bool) {
+            var arbitaryScoreId = "ArbitaryScore" + id;
+            var arbitaryScore = document.getElementById(arbitaryScoreId);
+
+            if (parseInt(arbitaryScore.value)){
+                if (bool) changeScore(id, +arbitaryScore.value);
+                else changeScore(id, -arbitaryScore.value);
+            }
         }
 
         function changeScore (id, change) {
@@ -89,16 +102,6 @@
                 playerScoreValue.innerHTML = "<input id="+inputScoreId+" value="+scoreInt+" type='text' onkeypress='applyScore(event, "+scoreInt+", "+id+")' onblur='applyScore(event, "+scoreInt+", "+id+")'/>";
             }
         }
-
-        /*   function applyScore (event, id) {
-         var inputTextId = "InputScore" + id;
-         var inputText = document.getElementById(inputTextId);
-
-         if (event.type == 'blur' || event.keyCode == 13) {
-         changeScore(id, inputText.value);
-         }
-         }
-         */
 
         function applyScore (event, score, id) {
             var playerScoreId = "Score" +id;

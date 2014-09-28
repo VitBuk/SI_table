@@ -23,10 +23,23 @@
     font-size: 16pt
 }
 
-.deletePlayerButtonData {
+.deletePlayerButton {
     width:  100px;
     height: 30px;
     font-size: 16pt;
+}
+
+.arbitaryButton {
+    width: 25px;
+    height: 57px;
+    font-size: 16pt;
+}
+
+.arbitaryTextField {
+    width: 50px;
+    height: 50px;
+    font-size: 16pt;
+    text-align: center;
 }
 
 .nameData {

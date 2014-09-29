@@ -141,11 +141,12 @@
 
             if (event.type == 'blur' || event.keyCode == 13){
                 if (inputName.value == "") {
-                    console.log ("playerName.dataset.player-old-name work? " + playerName.dataset.player-old-name);
-                    playerName.innerHTML = playerName.dataset.player-old-name;
+                    console.log ("playerName.dataset.player-old-name work? " + playerName.dataset.playerOldName);
+                    playerName.innerHTML = playerName.dataset.playerOldName;
                 }
                 else {
                     playerName.innerHTML = inputName.value;
+                    playerName.dataset.playerOldName = playerName.innerHTML;
                 }
             }
         }

@@ -19,7 +19,7 @@
         var playerList = document.getElementById("playerList");
 
         var playerColumn = "<div class=playerColumn id="+playerColumnId+">";
-        var playerNameDiv = "<div class=nameData id= "+playerNameId+" onclick='enterName("+playerId +")'> "+playerNameId+" </div>";
+        var playerNameDiv = "<div class=nameData id= "+playerNameId+" onclick='enterName("+playerId +")' data-player-old-name="+playerNameId+"> "+playerNameId+" </div>";
         var playerScoreDiv = "<div class=scoreData id="+playerScoreId+" onclick='enterScore("+playerId+")'>0</div>";
         var scoreHistoryDiv = "<div id="+scoreHistoryId+"> </div>";
 
@@ -103,7 +103,7 @@
         var scoreInt = parseInt(playerScoreValue.innerHTML);
 
         if (document.getElementById(inputScoreId) == null) {
-            playerScoreValue.innerHTML = "<input id="+inputScoreId+" value="+scoreInt+" type='text' onkeypress='applyScore(event, "+scoreInt+", "+id+")' onblur='applyScore(event, "+scoreInt+", "+id+")'/>";
+            playerScoreValue.innerHTML = "<input data- id="+inputScoreId+" value="+scoreInt+" type='text' onkeypress='applyScore(event, "+scoreInt+", "+id+")' onblur='applyScore(event, "+scoreInt+", "+id+")'/>";
         }
     }
 
@@ -133,7 +133,7 @@
 
 
         if (document.getElementById(inputNameId) == null) {
-            playerName.innerHTML = "<input id=" + inputNameId + " value=" +playerOldName+ " type'text' onkeypress='applyName(event, " + id + ")' onblur='applyName(event," + id + ")'/>";
+            playerName.innerHTML = "<input id=" + inputNameId + " value=" +playerOldName+ " type='text' onkeypress='applyName(event, " + id + ")' onblur='applyName(event," + id + ")'/>";
         }
     }
 
@@ -144,7 +144,14 @@
         var inputName = document.getElementById(inputNameId);
 
         if (event.type == 'blur' || event.keyCode == 13){
-            playerName.innerHTML = inputName.value;
+            if (inputName.value == "") {
+                console.log ("playerName.dataset.player-old-name work? " + playerName.dataset.playerOldName);
+                playerName.innerHTML = playerName.dataset.playerOldName;
+            }
+            else {
+                playerName.innerHTML = inputName.value;
+                playerName.dataset.playerOldName = playerName.innerHTML;
+            }
         }
     }
 }());

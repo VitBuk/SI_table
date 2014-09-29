@@ -15,7 +15,7 @@
             var playerList = document.getElementById("playerList");
 
             var playerColumn = "<div class=playerColumn id="+playerColumnId+">";
-            var playerNameDiv = "<div class=nameData id= "+playerNameId+" onclick='enterName("+playerId +")' data-playerOldName="+playerNameId+"> "+playerNameId+" </div>";
+            var playerNameDiv = "<div class=nameData id= "+playerNameId+" onclick='enterName("+playerId +")' data-player-old-name="+playerNameId+"> "+playerNameId+" </div>";
             var playerScoreDiv = "<div class=scoreData id="+playerScoreId+" onclick='enterScore("+playerId+")'>0</div>";
             var scoreHistoryDiv = "<div id="+scoreHistoryId+"> </div>";
 
@@ -141,9 +141,12 @@
 
             if (event.type == 'blur' || event.keyCode == 13){
                 if (inputName.value == "") {
-                    playerName.innerHTML = playerName.dataset.playerOldName;
+                    console.log ("playerName.dataset.player-old-name work? " + playerName.dataset.player-old-name);
+                    playerName.innerHTML = playerName.dataset.player-old-name;
                 }
+                else {
                     playerName.innerHTML = inputName.value;
+                }
             }
         }
 

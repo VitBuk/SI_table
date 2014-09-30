@@ -33,7 +33,8 @@
                     "<input class=scoreButton type='button' value='+50' onclick='changeScore("+playerId+", +50)'/></div>";
             var scoreButtonArbitary = "<div><input class=arbitaryButton type='button' value='-' onclick='changeTextField("+playerId +", false)' />" +
                     "<input class=arbitaryTextField id="+arbitaryScoreId+" type='text' value='10'/><input class=arbitaryButton type='button' value='+' onclick='changeTextField("+playerId+", true)' /> </div>";
-            scoreButtons += deletePlayerButton +scoreButton10 + scoreButton20 + scoreButton30 + scoreButton40 + scoreButton50 + scoreButtonArbitary;
+            var cancelButton = "<input class=cancelButton type='button' value='Cancel' onclick='cancelScoreUpdate("+playerId+")'/>";
+            scoreButtons += deletePlayerButton +scoreButton10 + scoreButton20 + scoreButton30 + scoreButton40 + scoreButton50 + scoreButtonArbitary + cancelButton;
             scoreButtons += "</div>";
 
             playerColumn += scoreButtons + playerNameDiv + playerScoreDiv + scoreHistoryDiv;
@@ -42,6 +43,21 @@
 
             //check playerColumn <div> composition
             console.log (playerColumn);
+        }
+
+        function cancelScoreUpdate (id) {
+            var scoreHistoryId = "ScoreHistory" + id;
+            var scoreHistory = document.getElementById(scoreHistoryId);
+            var lastChild = scoreHistory.lastChild;
+            var playerScoreId = "Score" + id;
+            var playerScore = document.getElementById(playerScoreId);
+
+            console.log ("parseInt(lastChild.value) is: " + parseInt(lastChild.value));
+            playerScore.innerHTML = playerScore.innerHTML - parseInt(lastChild.value);
+
+
+            console.log ("scoreHistory.lastChild" + scoreHistory.lastChild);
+            scoreHistory.removeChild(lastChild);
         }
 
         function changeTextField (id, bool) {
@@ -76,10 +92,10 @@
             var playerScoreHistory = document.getElementById(scoreHistoryId);
 
             if (change>0) {
-                playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+scoreHistoryId+"> "+score+"<span class=scoreHistoryIncrease> +"+change+"</span></div>" + playerScoreHistory.innerHTML;
+                playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+scoreHistoryId+" > "+score+"<span class=scoreHistoryIncrease> +"+change+"</span></div>" + playerScoreHistory.innerHTML;
             }
             else {
-                playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+scoreHistoryId+">"+score+"<span class=scoreHistoryDecrease> "+change+"</span></div>" + playerScoreHistory.innerHTML;
+                playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+scoreHistoryId+" >"+score+"<span class=scoreHistoryDecrease> "+change+"</span></div>" + playerScoreHistory.innerHTML;
             }
 
         }

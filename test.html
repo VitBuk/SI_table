@@ -17,7 +17,7 @@
             var playerColumn = "<div class=playerColumn id="+playerColumnId+">";
             var playerNameDiv = "<div class=nameData id= "+playerNameId+" onclick='enterName("+playerId +")' data-player-old-name="+playerNameId+"> "+playerNameId+" </div>";
             var playerScoreDiv = "<div class=scoreData id="+playerScoreId+" onclick='enterScore("+playerId+")'>0</div>";
-            var scoreHistoryDiv = "<div id="+scoreHistoryId+"> </div>";
+            var scoreHistoryDiv = "<div id="+scoreHistoryId+"></div>";
 
             var scoreButtons = "<div class=buttonsDiv>";
             var deletePlayerButton = "<input class=deletePlayerButton type='button' value='Delete' onclick='deletePlayer("+playerId+")'/>";
@@ -47,17 +47,15 @@
 
         function cancelScoreUpdate (id) {
             var scoreHistoryId = "ScoreHistory" + id;
-            var scoreHistory = document.getElementById(scoreHistoryId);
-            var lastChild = scoreHistory.lastChild;
             var playerScoreId = "Score" + id;
+            var scoreHistory = document.getElementById(scoreHistoryId);
             var playerScore = document.getElementById(playerScoreId);
+            var firstChild = scoreHistory.firstChild;
+            var scoreIncrement = firstChild.lastChild;
 
-            console.log ("parseInt(lastChild.value) is: " + parseInt(lastChild.value));
-            playerScore.innerHTML = playerScore.innerHTML - parseInt(lastChild.value);
+            playerScore.innerHTML = playerScore.innerHTML - scoreIncrement.innerHTML;
 
-
-            console.log ("scoreHistory.lastChild" + scoreHistory.lastChild);
-            scoreHistory.removeChild(lastChild);
+            scoreHistory.removeChild(firstChild);
         }
 
         function changeTextField (id, bool) {

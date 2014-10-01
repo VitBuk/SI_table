@@ -8,6 +8,7 @@
     window.enterName = enterName;
     window.applyName = applyName;
     window.changeTextField = changeTextField;
+    window.cancelScoreUpdate = cancelScoreUpdate;
 
     function addPlayer (playerId) {
         var playerColumnId = "Column" + playerId;
@@ -21,7 +22,7 @@
         var playerColumn = "<div class=playerColumn id="+playerColumnId+">";
         var playerNameDiv = "<div class=nameData id= "+playerNameId+" onclick='enterName("+playerId +")' data-player-old-name="+playerNameId+"> "+playerNameId+" </div>";
         var playerScoreDiv = "<div class=scoreData id="+playerScoreId+" onclick='enterScore("+playerId+")'>0</div>";
-        var scoreHistoryDiv = "<div id="+scoreHistoryId+"> </div>";
+        var scoreHistoryDiv = "<div id="+scoreHistoryId+"></div>";
 
         var scoreButtons = "<div class=buttonsDiv>";
         var deletePlayerButton = "<input class=deletePlayerButton type='button' value='Delete' onclick='deletePlayer("+playerId+")'/>";
@@ -37,7 +38,8 @@
             "<input class=scoreButton type='button' value='+50' onclick='changeScore("+playerId+", +50)'/></div>";
         var scoreButtonArbitary = "<div><input class=arbitaryButton type='button' value='-' onclick='changeTextField("+playerId +", false)' />" +
             "<input class=arbitaryTextField id="+arbitaryScoreId+" type='text' value='10'/><input class=arbitaryButton type='button' value='+' onclick='changeTextField("+playerId+", true)' /> </div>";
-        scoreButtons += deletePlayerButton +scoreButton10 + scoreButton20 + scoreButton30 + scoreButton40 + scoreButton50 + scoreButtonArbitary;
+        var cancelButton = "<input class=cancelButton type='button' value='Cancel' onclick='cancelScoreUpdate("+playerId+")'/>";
+        scoreButtons += deletePlayerButton +scoreButton10 + scoreButton20 + scoreButton30 + scoreButton40 + scoreButton50 + scoreButtonArbitary + cancelButton;
         scoreButtons += "</div>";
 
         playerColumn += scoreButtons + playerNameDiv + playerScoreDiv + scoreHistoryDiv;
@@ -46,6 +48,19 @@
 
         //check playerColumn <div> composition
         console.log (playerColumn);
+    }
+
+    function cancelScoreUpdate (id) {
+        var scoreHistoryId = "ScoreHistory" + id;
+        var playerScoreId = "Score" + id;
+        var scoreHistory = document.getElementById(scoreHistoryId);
+        var playerScore = document.getElementById(playerScoreId);
+        var firstChild = scoreHistory.firstChild;
+        var scoreIncrement = firstChild.lastChild;
+
+        playerScore.innerHTML = playerScore.innerHTML - scoreIncrement.innerHTML;
+
+        scoreHistory.removeChild(firstChild);
     }
 
     function changeTextField (id, bool) {
@@ -80,10 +95,10 @@
         var playerScoreHistory = document.getElementById(scoreHistoryId);
 
         if (change>0) {
-            playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+scoreHistoryId+"> "+score+"<span class=scoreHistoryIncrease> +"+change+"</span></div>" + playerScoreHistory.innerHTML;
+            playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+scoreHistoryId+" > "+score+"<span class=scoreHistoryIncrease> +"+change+"</span></div>" + playerScoreHistory.innerHTML;
         }
         else {
-            playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+scoreHistoryId+">"+score+"<span class=scoreHistoryDecrease> "+change+"</span></div>" + playerScoreHistory.innerHTML;
+            playerScoreHistory.innerHTML = "<div class=scoreHistoryData id="+scoreHistoryId+" >"+score+"<span class=scoreHistoryDecrease> "+change+"</span></div>" + playerScoreHistory.innerHTML;
         }
 
     }
